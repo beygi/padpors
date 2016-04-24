@@ -1,11 +1,36 @@
-{{#if currentUser.name}}
-{{else}}
-  <div class='extra-suggests'>
-    <div class="profile-fix">
-      مشخصات خود را تکمیل کنید
-      <a href='/users/{{currentUser.username}}/preferences' class='btn btn-primary btn-small'>تغییر مشخصات
+{{#if currentUser}}
+  {{#if currentUser.name}}
+    {{#if currentUser.hasAvatar}}
+      {{#if currentUser.hasBio}}
+      {{else}}
+        <div class='extra-suggests'>
+          <div class="profile-fix">
+            {{i18n 'write something about yourself'}}
+            <a href='/users/{{currentUser.username}}/preferences' class='btn btn-primary btn-small'>
+              {{i18n 'change bio'}}</a>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+      {{/if}}
+    {{else}}
+      <div class='extra-suggests'>
+        <div class="profile-fix">
+          {{i18n 'time to upload an avatar !'}}
+          <a href='/users/{{currentUser.username}}/preferences' class='btn btn-primary btn-small'>
+          {{i18n 'change avatar'}}</a>
+        </div>
+      </div>
+      <div class="clearfix"></div>
+    {{/if}}
+  {{else}}
+    <div class='extra-suggests'>
+      <div class="profile-fix">
+        {{i18n 'please update your profile'}}
+        <a href='/users/{{currentUser.username}}/preferences' class='btn btn-primary btn-small'>
+          {{i18n 'update profile'}}
     </a>
+      </div>
     </div>
-  </div>
-  <div class="clearfix"></div>
+    <div class="clearfix"></div>
+  {{/if}}
 {{/if}}
